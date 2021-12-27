@@ -1,18 +1,58 @@
 <html>
 
 <head>
-    <title>Welcome to Alex's Webpage</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Welcome to Alex's Webpage</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 
 
 <body>
-    <h1>Welcome to Alex's Public WebPage</h1>
+  <h1>Welcome to Alex's Public WebPage</h1>
+
+
+
+  <script>
+    function ageCalculator() {
+      var userinput = document.getElementById("DOB").value;
+      var dob = new Date(userinput);
+      if (userinput == null || userinput == '') {
+        document.getElementById("message").innerHTML = "**Choose a date please!";
+        return false;
+      } else {
+
+        //calculate month difference from current date in time  
+        var month_diff = Date.now() - dob.getTime();
+
+        //convert the calculated difference in date format  
+        var age_dt = new Date(month_diff);
+
+        //extract year from date      
+        var year = age_dt.getUTCFullYear();
+
+        //now calculate the age of the user  
+        var age = Math.abs(year - 1970);
+
+        //display the calculated age  
+        return document.getElementById("result").innerHTML =
+          "You are  " + age + " years old ";
+      }
+    }  
+  </script>
+  </head>
+
+  <body>
+    <h2 style="color: 32A80F"> Alex's age calculator </h2>
     <form action="#">
-  <label for="birthday">Birthday:</label>
-  <input type="date" id="birthday" name="birthday">
-  <input type="submit" name="calculate your age">
-</form>
-</body>
+      <!-- Choose a date and enter in input field -->
+      <b> Enter Date of Birth: <input type=date id=DOB value="2013-04-22"> </b>
+      <span id="message" style="color:red"> </span>
+
+      <!-- Choose a date and enter in input field -->
+      <button type="submit" onclick="ageCalculator()"> Calculate age </button>
+    </form>
+    <h3 style="color:32A80F" id="result"></h3>
+
+  </body>
 
 </html>
